@@ -3,11 +3,12 @@ import CustomerList from './components/CustomerList.jsx';
 import SalesForm from './components/SalesForm.jsx';
 import SalesList from './components/SalesList.jsx';
 import CustomerSearch from './components/CustomerSearch.jsx';
+import SalesReport from './components/SalesReport.jsx';
 import './App.css'; 
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('home');
-
+         
   const renderComponent = () => {
     switch (activeComponent) {
       case 'customers':
@@ -18,27 +19,25 @@ function App() {
         return <SalesList />; // Eje 4
       case 'customer-search':
         return <CustomerSearch />; // Eje 5
-      // case 'sales-report':
-      //   return <SalesReport />; // Eje 6
+      case 'sales-report':
+        return <SalesReport />; // Eje 6
       default:
-        return (
-          <>
-            <h1>Mini-Proyecto Guía X</h1>
-            <p>Selecciona un ejercicio para comenzar.</p>
-          </>
-        );
+        ;
     }
   };
 
   return (
+    
     <>
+            <h1>Mini-Proyecto Guia X</h1>
+            <p>Para empezar, selecciona una opcion.</p>
       <nav className="nav-menu">
-        <button onClick={() => setActiveComponent('home')}>🏠 Home</button>
-        <button onClick={() => setActiveComponent('customers')}>Eje 2: Listar Clientes</button>
-        <button onClick={() => setActiveComponent('sales-form')}>Eje 3: Registrar Venta</button>
-        <button onClick={() => setActiveComponent('sales-list')}>Eje 4: Listar Ventas</button>
-        <button onClick={() => setActiveComponent('customer-search')}>Eje 5: Buscar Cliente</button>
-        {/* <button onClick={() => setActiveComponent('sales-report')}>Eje 6: Reporte</button> */}
+        <button onClick={() => setActiveComponent('home')}>Home</button>
+        <button onClick={() => setActiveComponent('customers')}>Listar Clientes</button>
+        <button onClick={() => setActiveComponent('sales-form')}>Registrar Venta</button>
+        <button onClick={() => setActiveComponent('sales-list')}>Listar Ventas</button>
+        <button onClick={() => setActiveComponent('customer-search')}>Buscar Cliente</button>
+        <button onClick={() => setActiveComponent('sales-report')}>Reporte de ventas</button>
       </nav>
       <div className="content">
         {renderComponent()}

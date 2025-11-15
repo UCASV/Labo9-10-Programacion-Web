@@ -1,65 +1,51 @@
 /* =======================================================
-   VARIABLES Y ESTILOS BASE
+   ESTILOS BASE, FUENTES Y LAYOUT GLOBAL
    ======================================================= */
 :root {
-    --color-primary: #007bff;
-    --color-secondary: #6c757d;
-    --color-success: #28a745;
-    --color-error: #dc3545;
-    --color-background: #f8f9fa; 
-    --color-surface: #ffffff;
-    --color-header-bg: #343a40;
-    --max-content-width: 850px; /* Ancho máximo para el contenido principal */
+    /* Paleta de colores más moderna */
+    --color-secondary: #4c5257;   /* Gris oscuro */
+    --color-success: #28a745;     /* Verde para éxito */
+    --color-error: #dc3545;       /* Rojo para errores */
+    --color-background: #f8f9fa;  /* Fondo muy claro */
+    --color-surface: #ffffff;     /* Blanco para tarjetas y tablas */
+    --color-header-bg: #24609d;   /* Gris oscuro para navbar/header */
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--color-background);
-    color: #212529;
-    margin: 0;
-    padding: 0;
-}
 
-/* -------------------------------------------------------
-   1. CONTENEDOR PRINCIPAL: CENTRADO DE LA PÁGINA
-   ------------------------------------------------------- */
+
+/* Contenedor principal: Centra la página en pantallas grandes */
 .page-content-container {
     padding: 20px;
-    max-width: var(--max-content-width); /* Máximo de 850px */
-    margin: 0 auto; /* CENTRADO HORIZONTAL DEL BLOQUE CONTENEDOR */
-    padding-top: 80px;
+    max-width: 1000px;
+    margin: 0 auto; /* Centra el bloque de contenido horizontalmente */
+    padding-top: 80px; /* Espacio para el Navbar */
+    
 }
-
-h1 {
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
 
 /* =======================================================
-   HOME (BOTONES DE NAVEGACIÓN)
+   ESTILOS DEL HOME (BOTONES CENTRADOS)
    ======================================================= */
 
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    justify-content: center; 
     text-align: center;
+    /* Usamos min-height para asegurar que el contenido se centre verticalmente si es necesario */
     min-height: calc(100vh - 120px); 
+    justify-content: center; 
 }
 
 .home-title {
     font-size: 3em;
-    color: #343a40;
+    color: #1269c0;
     margin-bottom: 10px;
 }
 
 .home-buttons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    /* Grid de columnas automáticas con mínimo de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 25px;
     margin-top: 40px;
     width: 100%;
@@ -67,6 +53,11 @@ h1 {
 }
 
 .home-button {
+    /* Estilo como botón/tarjeta, más limpio y con buen relieve */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     text-decoration: none;
     padding: 25px 20px;
     border-radius: 12px;
@@ -76,41 +67,35 @@ h1 {
     font-weight: 600;
     font-size: 1.1em;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .home-button:hover {
     background-color: var(--color-primary);
     color: var(--color-surface);
-    transform: translateY(-4px);
+    transform: translateY(-4px); /* Efecto de levantamiento */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* =======================================================
-   ESTILOS DE TABLAS (EJERCICIOS 2, 4, 6)
+   ESTILOS DE TABLAS
    ======================================================= */
-
-/* Wrapper que fuerza el centrado de los componentes de lista/reporte */
-.list-wrapper {
-    margin: 30px auto; /* Centrado */
-    max-width: 90%;
-}
 
 table {
     width: 100%;
-    border-collapse: separate; 
+    border-collapse: separate; /* Permite border-radius en el thead */
     border-spacing: 0;
-    /* La tabla se centrará si su contenedor es más ancho, gracias al margin: auto */
-    margin: 0 auto; 
+    margin: 30px auto; /* Centra la tabla si su ancho es menor al 100% (aunque aquí es 100%) */
     background-color: var(--color-surface);
-    border-radius: 8px;
-    overflow: hidden; 
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Importante para que el radio aplique al thead */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 th, td {
     padding: 15px;
     text-align: left;
+    /* Líneas divisorias más sutiles */
     border-bottom: 1px solid #e9ecef; 
 }
 
@@ -122,32 +107,25 @@ th {
     font-weight: 700;
 }
 
-tr:nth-child(even) {
-    background-color: #f8f8f8;
+/* Estilo para la última fila de la tabla */
+tr:last-child td {
+    border-bottom: none;
 }
 
-
 /* =======================================================
-   ESTILOS PARA FORMULARIOS (EJERCICIOS 3, 5)
+   ESTILOS PARA FORMULARIOS
    ======================================================= */
 
 .form-container {
     padding: 30px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #f5f6f6;
     border-radius: 10px;
     background-color: var(--color-surface);
-    max-width: 450px; /* Ancho fijo para que el centrado sea visible */
-    margin: 30px auto; /* CENTRA EL FORMULARIO HORIZONTALMENTE */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin: 30px auto; /* CENTRA EL FORMULARIO */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.form-container input {
-    width: 100%;
-    padding: 12px;
-    /* ... otros estilos ... */
-}
-
-/* Resto de estilos de formulario, botones y mensajes se mantienen */
 .form-container div {
     margin-bottom: 20px;
 }
@@ -159,26 +137,150 @@ tr:nth-child(even) {
     color: var(--color-secondary);
 }
 
-.form-button {
+.form-container input {
     width: 100%;
-    background-color: var(--color-primary);
-    /* ... otros estilos ... */
+    padding: 12px;
+    border: 1px solid #fafbfb;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
-/* ... estilos de mensajes ... */
+
+.form-container input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(32, 105, 183, 0.622);
+    outline: none;
+}
+
 
 .message-success {
     color: var(--color-success);
-    /* ... */
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .message-error {
     color: var(--color-error);
-    /* ... */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
 }
 
+/* Estilos para el contenedor de resultados de búsqueda (Eje 5) */
 .result-box {
-    margin: 30px auto; /* CENTRADO EN BUSCADOR */
+    margin: 30px auto; /* Centrado */
     max-width: 450px;
     border: 1px solid var(--color-primary);
-    /* ... */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e9f5ff; /* Tono azul muy claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-box h3 {
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+/* =======================================================
+   1. RESET GLOBAL Y HTML/BODY
+   (Elimina el margen por defecto y el espacio superior no deseado)
+   ======================================================= */
+body, html, #root {
+    /* Elimina el margen y padding por defecto */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #2e3339;
+}
+
+/* =======================================================
+   2. CENTRADO HORIZONTAL DE TÍTULO Y SUBTÍTULO
+   ======================================================= */
+
+/* Centra el texto (h1 y p) horizontalmente */
+h1, p {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px; 
+}
+
+/* Ajustes visuales para el título */
+h1 {
+    color: #24609d; 
+    font-size: 2.5em;
+    /* Controla el espacio superior. Si quieres que quede más pegado, reduce este valor. */
+    margin-top: 50px; 
+    margin-bottom: 5px;
+}
+
+h2 {
+  color: #24609d; 
+}
+
+p {
+    color: #6c757d;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+
+/* =======================================================
+   3. CENTRADO DE LA BARRA DE NAVEGACIÓN (BOTONES)
+   ======================================================= */
+
+.nav-menu {
+    /* Utiliza Flexbox para centrar los elementos hijos */
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; 
+    
+    /* Limita el ancho del bloque de navegación y lo centra */
+    width: 100%; 
+    max-width: 900px;
+    margin: 20px auto; /* Centra el bloque de la barra de navegación */
+    
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.nav-menu button {
+    padding: 12px 18px;
+    border: 2px solid #2d7ed4;
+    background-color: #f8f9fa;
+    color: #0573f2;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu button:hover {
+    background-color: #1a5088;
+    color: white;
+}
+
+/* 4. Contenedor del contenido dinámico (.content) */
+.content {
+    max-width: 900px;
+    margin: 30px auto; /* Centra el contenido de los componentes */
+    padding: 0 15px;
+    width: 100%;
 }
