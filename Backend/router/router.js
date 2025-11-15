@@ -14,6 +14,7 @@ import { deleteUser } from "../controllers/deleteUser.js";
 import { getCustomers } from "../controllers/getCustomers.js";
 import { postSales } from "../controllers/postSales.js";
 import { getSales } from "../controllers/getSales.js";
+import { searchCustomers } from "../controllers/searchCustomer.js";
 
 // creación del enrutador 
 const router = express.Router();
@@ -27,7 +28,8 @@ router.get("/users/:id", verifyToken, getUserById);
 router.put("/users/:id", verifyToken, updateUser);
 router.delete('/users/:id', verifyToken, deleteUser);
 //endpoints Creados en el labo 10 
-router.get("/customers", verifyToken, getCustomers);
-router.post("/sales", verifyToken, postSales);
-router.get("/sales", verifyToken, getSales);
+router.get("/customers", getCustomers);
+router.post("/sales", postSales);
+router.get("/sales", getSales);
+router.get("/customers/search", searchCustomers);
 export default router;

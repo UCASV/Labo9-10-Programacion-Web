@@ -1,42 +1,184 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* =======================================================
+   VARIABLES Y ESTILOS BASE
+   ======================================================= */
+:root {
+    --color-primary: #007bff;
+    --color-secondary: #6c757d;
+    --color-success: #28a745;
+    --color-error: #dc3545;
+    --color-background: #f8f9fa; 
+    --color-surface: #ffffff;
+    --color-header-bg: #343a40;
+    --max-content-width: 850px; /* Ancho máximo para el contenido principal */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    color: #212529;
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* -------------------------------------------------------
+   1. CONTENEDOR PRINCIPAL: CENTRADO DE LA PÁGINA
+   ------------------------------------------------------- */
+.page-content-container {
+    padding: 20px;
+    max-width: var(--max-content-width); /* Máximo de 850px */
+    margin: 0 auto; /* CENTRADO HORIZONTAL DEL BLOQUE CONTENEDOR */
+    padding-top: 80px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h1 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-.card {
-  padding: 2em;
+
+/* =======================================================
+   HOME (BOTONES DE NAVEGACIÓN)
+   ======================================================= */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    min-height: calc(100vh - 120px); 
 }
 
-.read-the-docs {
-  color: #888;
+.home-title {
+    font-size: 3em;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.home-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.home-button {
+    text-decoration: none;
+    padding: 25px 20px;
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.home-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* =======================================================
+   ESTILOS DE TABLAS (EJERCICIOS 2, 4, 6)
+   ======================================================= */
+
+/* Wrapper que fuerza el centrado de los componentes de lista/reporte */
+.list-wrapper {
+    margin: 30px auto; /* Centrado */
+    max-width: 90%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    /* La tabla se centrará si su contenedor es más ancho, gracias al margin: auto */
+    margin: 0 auto; 
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef; 
+}
+
+th {
+    background-color: var(--color-header-bg);
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: 700;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+
+/* =======================================================
+   ESTILOS PARA FORMULARIOS (EJERCICIOS 3, 5)
+   ======================================================= */
+
+.form-container {
+    padding: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    background-color: var(--color-surface);
+    max-width: 450px; /* Ancho fijo para que el centrado sea visible */
+    margin: 30px auto; /* CENTRA EL FORMULARIO HORIZONTALMENTE */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    /* ... otros estilos ... */
+}
+
+/* Resto de estilos de formulario, botones y mensajes se mantienen */
+.form-container div {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.form-button {
+    width: 100%;
+    background-color: var(--color-primary);
+    /* ... otros estilos ... */
+}
+/* ... estilos de mensajes ... */
+
+.message-success {
+    color: var(--color-success);
+    /* ... */
+}
+
+.message-error {
+    color: var(--color-error);
+    /* ... */
+}
+
+.result-box {
+    margin: 30px auto; /* CENTRADO EN BUSCADOR */
+    max-width: 450px;
+    border: 1px solid var(--color-primary);
+    /* ... */
 }

@@ -2,7 +2,12 @@ import { db } from "../data/connection.js";
 
 export const getSales = async (req, res) => {
     try {
-        // Consulta con JOIN: Obtener ventas con el nombre del cliente [cite: 160, 161, 162]
+        // SOLUCIÓN: Deshabilitar explícitamente el caché para forzar un 200 OK y datos frescos
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
+        
+        // Consulta con JOIN: Obtener ventas con el nombre del cliente
         const query = `
             SELECT 
                 s.id, 

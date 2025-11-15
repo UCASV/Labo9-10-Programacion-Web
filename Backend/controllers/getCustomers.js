@@ -1,25 +1,25 @@
-import { db } from "../data/connection.js";
+import { db } from "../data/connection.js"; 
 
-export const getUsers = async (req, res) => {
-  const { order } = req.query;
-  if (order === "asc") return await getUsersAsc(req, res);
+export const getCustomers = async (req, res) => {
+    try {
+        // SOLUCIÓN: Deshabilitar explícitamente el caché para forzar un 200 OK
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
 
-  await getUsersDesc(req, res);
-};
+        // Consulta: SELECT * FROM customers;
+        const query = "SELECT id, name, address, phone, code FROM customers";
+        const result = await db.query(query);
 
-export const getCustomers = async (req, res) =>{
-    db.query("SELECT * FROM customers", async (error, results) => {
-         if (error) {
-      throw error;
+        if (result.rows.length === 0) {
+            // Verifica que tengas clientes en tu DB. Si no hay, te dará 404.
+            return res.status(404).json({ message: "No se encontraron clientes." });
+        }
+
+        // Si hay datos, retorna 200 OK
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error("Error al obtener clientes:", error.message);
+        res.status(500).json({ message: "Error interno del servidor al obtener clientes." });
     }
-
-    const resultsFind = results.rows;
-    const resultsLength = resultsFind.length ?? 0;
-
-    return res.status(200).json({
-      success: true,
-      message: `customers found: ${resultsLength}`,
-      resultsFind,
-      });
-    });
-}
+};

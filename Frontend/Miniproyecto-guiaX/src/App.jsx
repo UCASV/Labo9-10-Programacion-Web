@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import CustomerList from './components/CustomerList.jsx';
+import SalesForm from './components/SalesForm.jsx';
+import SalesList from './components/SalesList.jsx';
+import CustomerSearch from './components/CustomerSearch.jsx';
+import './App.css'; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeComponent, setActiveComponent] = useState('home');
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'customers':
+        return <CustomerList />; // Eje 2
+      case 'sales-form':
+        return <SalesForm />; // Eje 3
+      case 'sales-list':
+        return <SalesList />; // Eje 4
+      case 'customer-search':
+        return <CustomerSearch />; // Eje 5
+      // case 'sales-report':
+      //   return <SalesReport />; // Eje 6
+      default:
+        return (
+          <>
+            <h1>Mini-Proyecto Guía X</h1>
+            <p>Selecciona un ejercicio para comenzar.</p>
+          </>
+        );
+    }
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <nav className="nav-menu">
+        <button onClick={() => setActiveComponent('home')}>🏠 Home</button>
+        <button onClick={() => setActiveComponent('customers')}>Eje 2: Listar Clientes</button>
+        <button onClick={() => setActiveComponent('sales-form')}>Eje 3: Registrar Venta</button>
+        <button onClick={() => setActiveComponent('sales-list')}>Eje 4: Listar Ventas</button>
+        <button onClick={() => setActiveComponent('customer-search')}>Eje 5: Buscar Cliente</button>
+        {/* <button onClick={() => setActiveComponent('sales-report')}>Eje 6: Reporte</button> */}
+      </nav>
+      <div className="content">
+        {renderComponent()}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
