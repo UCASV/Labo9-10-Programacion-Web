@@ -30,7 +30,7 @@ const SalesForm = () => {
                 throw new Error(data.message || 'Error al registrar la venta.');
             }
 
-            setMessage(`Éxito: ${data.message}`);
+            setMessage(`Exito: ${data.message}`);
             setAmount('');
             setIdCustomer('');
         } catch (error) {

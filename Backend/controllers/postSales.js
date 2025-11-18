@@ -1,7 +1,6 @@
 import { db } from "../data/connection.js"; 
 
 export const postSales = async (req, res) => {
-    // Asegúrate de que los datos llegan correctamente del frontend
     const { amount, id_customer } = req.body; 
 
     if (!amount || !id_customer) {

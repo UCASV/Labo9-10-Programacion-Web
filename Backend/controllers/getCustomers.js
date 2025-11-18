@@ -2,7 +2,6 @@ import { db } from "../data/connection.js";
 
 export const getCustomers = async (req, res) => {
     try {
-        // SOLUCIÓN: Deshabilitar explícitamente el caché para forzar un 200 OK
         res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
         res.set('Pragma', 'no-cache');
         res.set('Expires', '0');
@@ -12,11 +11,9 @@ export const getCustomers = async (req, res) => {
         const result = await db.query(query);
 
         if (result.rows.length === 0) {
-            // Verifica que tengas clientes en tu DB. Si no hay, te dará 404.
             return res.status(404).json({ message: "No se encontraron clientes." });
         }
 
-        // Si hay datos, retorna 200 OK
         res.status(200).json(result.rows);
     } catch (error) {
         console.error("Error al obtener clientes:", error.message);

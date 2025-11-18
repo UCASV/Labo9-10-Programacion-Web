@@ -2,7 +2,6 @@ import { db } from "../data/connection.js";
 
 export const getSalesReport = async (req, res) => {
     try {
-        // SOLUCIÓN: Deshabilitar explícitamente el caché (Para prevenir el status 304)
         res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
         res.set('Pragma', 'no-cache');
         res.set('Expires', '0');
